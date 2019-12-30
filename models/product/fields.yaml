@@ -1,0 +1,33 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    active:
+        label: Active
+        type: switch
+    name:
+        label: Name
+        type: text
+        span: left
+    slug:
+        label: Url
+        type: text
+        span: right
+tabs:
+    fields:
+        description:
+            label: Description
+            type: richeditor
+            size: large
+            tab: Description
+        preview_image:
+            label: Preview Image
+            type: fileupload
+            mode: image
+            useCaption: true
+            span: left
+            thumbOptions:
+                mode: crop
+                extension: auto
+            tab: Images

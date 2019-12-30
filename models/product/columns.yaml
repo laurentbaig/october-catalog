@@ -1,0 +1,18 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    active:
+        label: Active
+        type: switch
+    category:
+        lable: Category
+        relation: category
+        select: name
+    name:
+        label: Name
+        type: text
