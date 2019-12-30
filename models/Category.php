@@ -74,7 +74,9 @@ class Category extends Model
     public $hasMany = [
         'Lbaig\Catalog\Models\Product'
     ];
-    public $belongsTo = [];
+    public $belongsTo = [
+        'parent' => 'Lbaig\Catalog\Models\Category'
+    ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
@@ -84,4 +86,8 @@ class Category extends Model
     ];
     public $attachMany = [];
 
+    public function scopeActive($query)
+    {
+        $query->where('active', true);
+    }
 }

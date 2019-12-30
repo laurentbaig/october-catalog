@@ -78,4 +78,10 @@ class Product extends Model
         'preview_image' => 'System\Models\File'
     ];
     public $attachMany = [];
+
+
+    public function scopeActive($query)
+    {
+        $query->where('active', true);
+    }
 }

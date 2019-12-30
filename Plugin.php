@@ -50,10 +50,11 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
-
         return [
-            'Lbaig\Catalog\Components\MyComponent' => 'myComponent',
+            'Lbaig\Catalog\Components\Breadcrumbs' => 'Breadcrumbs',
+            'Lbaig\Catalog\Components\CategoryItem' => 'CategoryItem',
+            'Lbaig\Catalog\Components\CategoryList' => 'CategoryList',
+            'Lbaig\Catalog\Components\ProductList' => 'ProductList'
         ];
     }
 
