@@ -16,3 +16,14 @@ columns:
         lable: Category
         relation: parent
         select: name
+    subcategories_count:
+        label: Subcategories
+        relation: subcategories
+        useRelationCount: true
+        type: number
+    productCount:
+        label: Products
+        type: number
+    nestedCount:
+        label: Total Products
+        type: number

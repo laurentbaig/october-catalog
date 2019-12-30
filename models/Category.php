@@ -72,10 +72,13 @@ class Category extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'Lbaig\Catalog\Models\Product'
+        'products' => 'Lbaig\Catalog\Models\Product',
+        'subcategories' => [
+            'Lbaig\Catalog\Models\Category',
+            'key' => 'parent_id'
+        ]
     ];
-    public $belongsTo = [
-        'parent' => 'Lbaig\Catalog\Models\Category'
+    public $belongsTo = ['parent' => 'Lbaig\Catalog\Models\Category'
     ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -89,5 +92,26 @@ class Category extends Model
     public function scopeActive($query)
     {
         $query->where('active', true);
+    }
+
+    public function getProductCountAttribute()
+    {
+        return $this->products->count();
+    }
+
+    public function getNestedCountAttribute()
+    {
+        // select all subcategories as well as category
+        $subcategory_ids = Category::active()
+                         ->where('nest_left', '>=', $this->nest_left)
+                         ->where('nest_right', '<=', $this->nest_right)
+                         ->pluck('id');
+
+        // select all products that belong to this category or lower
+        $products = Product::active()
+                  ->whereIn('category_id', $subcategory_ids)
+                  ->count();
+
+        return $products;
     }
 }

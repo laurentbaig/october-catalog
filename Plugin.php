@@ -54,6 +54,7 @@ class Plugin extends PluginBase
             'Lbaig\Catalog\Components\Breadcrumbs' => 'Breadcrumbs',
             'Lbaig\Catalog\Components\CategoryItem' => 'CategoryItem',
             'Lbaig\Catalog\Components\CategoryList' => 'CategoryList',
+            'Lbaig\Catalog\Components\ProductItem' => 'ProductItem',
             'Lbaig\Catalog\Components\ProductList' => 'ProductList'
         ];
     }
