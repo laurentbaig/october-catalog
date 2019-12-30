@@ -6,6 +6,11 @@ fields:
     active:
         label: Active
         type: switch
+        span: left
+    taxable:
+        label: Taxable
+        type: switch
+        span: right
     name:
         label: Name
         type: text
@@ -16,6 +21,21 @@ fields:
         span: right
 tabs:
     fields:
+        price:
+            label: Base price
+            type: number
+            span: left
+            tab: Meta
+        shipping_weight:
+            label: Base Shipping Weight
+            type: number
+            span: left
+            tab: Meta
+        vendor_code:
+            label: Vendor Code
+            type: text
+            span: left
+            tab: Meta
         description:
             label: Description
             type: richeditor
