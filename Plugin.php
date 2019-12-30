@@ -87,7 +87,7 @@ class Plugin extends PluginBase
             'catalog' => [
                 'label'       => 'Catalog',
                 'url'         => Backend::url('lbaig/catalog/products'),
-                'icon'        => 'icon-leaf',
+                'icon'        => 'icon-th-large',
                 'permissions' => ['lbaig.catalog.*'],
                 'order'       => 500,
                 'sideMenu' => [

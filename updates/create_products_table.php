@@ -13,8 +13,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
             $table->boolean('active')->default(false);
+            $table->boolean('taxable')->default(true);
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('vendor_code')->nullable();
+            $table->decimal('price', 13, 2)->default(0);
+            $table->integer('shipping_weight')->default(0);
             $table->text('description')->nullable();
 
             $table->foreign('category_id')
@@ -27,9 +31,6 @@ class CreateProductsTable extends Migration
 
     public function down()
     {
-        Schema::table('lbaig_catalog_products', function (Blueprint $table) {
-            //$table->dropForeign('lbaig_catalog_products_category_id_foreign');
-        });
         Schema::dropIfExists('lbaig_catalog_products');
     }
 }
