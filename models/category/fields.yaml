@@ -31,3 +31,13 @@ tabs:
                 mode: crop
                 extension: auto
             tab: Images
+        options:
+            label: Options
+            type:  relation
+            nameFrom: name
+            context:
+                - update
+                - preview
+            span: left
+            tab: Options
+

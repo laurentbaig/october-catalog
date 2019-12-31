@@ -3,17 +3,16 @@
 use Model;
 
 /**
- * Product Model
+ * Option Model
  */
-class Product extends Model
+class Option extends Model
 {
-    use \October\Rain\Database\Traits\Sluggable;
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'lbaig_catalog_products';
+    public $table = 'lbaig_catalog_options';
 
     /**
      * @var array Guarded fields
@@ -23,7 +22,10 @@ class Product extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'display_name'
+    ];
 
     /**
      * @var array Validation rules for attributes
@@ -50,10 +52,6 @@ class Product extends Model
      */
     protected $hidden = [];
 
-    protected $slugs = [
-        'slug' => 'name'
-    ];
-
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
@@ -66,30 +64,27 @@ class Product extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [
-        'category' => 'Lbaig\Catalog\Models\Category'
+    public $hasMany = [
+        'optionItems' => 'Lbaig\Catalog\Models\OptionItem'
     ];
+    public $belongsTo = [];
     public $belongsToMany = [
-        'options' => ['Lbaig\Catalog\Models\Option', 'table'=>'lbaig_catalog_product_option']
+        'categories' => ['Lbaig\Catalog\Models\Category', 'table' => 'lbaig_catalog_category_option'],
+        'products' => ['Lbaig\Catalog\Models\Product', 'table' => 'lbaig_catalog_product_option']
     ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [
-        'preview_image' => 'System\Models\File'
-    ];
+    public $attachOne = [];
     public $attachMany = [];
 
 
-    public function scopeActive($query)
+    public function getDisplayNameAttribute($value)
     {
-        $query->where('active', true);
+        if (strlen($value) === 0) {
+            return $this->name;
+        }
+        return $value;
     }
 
-    public function afterCreate()
-    {
-        $categoryOptionIds = $this->category->options->pluck('id');
-        $this->options()->sync($categoryOptionIds);
-    }
 }

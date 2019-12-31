@@ -1,0 +1,26 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+#     id:
+#         label: ID
+#         searchable: true
+    name:
+        label: Name
+        type: text
+    price:
+        label: Added Price
+        type: number
+    shipping_weight:
+        label: Added Weight
+        type: number
+    sort_order_handle:
+        label: "<i class=\"icon-arrows\"></i>"
+        type: partial
+        path: $/lbaig/catalog/models/optionitem/_reorder_handle.htm
+        sortable: false
+        width: 60px
+    sort_order:
+        invisible: true
+        type: number

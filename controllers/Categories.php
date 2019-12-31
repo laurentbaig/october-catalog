@@ -11,7 +11,7 @@ class Categories extends Controller
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
-        'Backend.behaviors.ReorderController'
+        'Backend.Behaviors.ReorderController',
     ];
 
     public $formConfig = 'config_form.yaml';

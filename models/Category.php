@@ -80,7 +80,9 @@ class Category extends Model
     ];
     public $belongsTo = ['parent' => 'Lbaig\Catalog\Models\Category'
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'options' => ['Lbaig\Catalog\Models\Option', 'table' => 'lbaig_catalog_category_option']
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
@@ -88,6 +90,7 @@ class Category extends Model
         'preview_image' => 'System\Models\File'
     ];
     public $attachMany = [];
+
 
     public function scopeActive($query)
     {

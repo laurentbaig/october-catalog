@@ -1,0 +1,19 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    name:
+        label: Name
+        type: text
+    display_name:
+        label: Display Name
+        type: text
+    optionItems_count:
+        label: Options
+        relation: optionItems
+        useRelationCount: true
+        type: number

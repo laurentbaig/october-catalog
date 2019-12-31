@@ -11,6 +11,10 @@ fields:
         label: Taxable
         type: switch
         span: right
+    category:
+        label: Category
+        type: relation
+        nameFrom: name
     name:
         label: Name
         type: text
@@ -51,3 +55,12 @@ tabs:
                 mode: crop
                 extension: auto
             tab: Images
+        options:
+            label: Options
+            type:  relation
+            nameFrom: name
+            context:
+                - update
+                - preview
+            span: left
+            tab: Options

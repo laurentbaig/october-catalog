@@ -1,0 +1,20 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+    name:
+        label: Name
+        type: text
+        span: left
+    display_name:
+        label: Display Name
+        type: text
+        span: right
+    optionItems:
+        label: Option Items
+        type: partial
+        partial: ~/plugins/lbaig/catalog/controllers/options/_optionitems.htm
