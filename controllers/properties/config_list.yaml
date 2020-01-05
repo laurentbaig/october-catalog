@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/lbaig/catalog/models/option/columns.yaml
+list: $/lbaig/catalog/models/property/columns.yaml
 
 # Model Class name
-modelClass: Lbaig\Catalog\Models\Option
+modelClass: Lbaig\Catalog\Models\Property
 
 # List Title
-title: Manage Options
+title: Manage Properties
 
 # Link URL for each record
-recordUrl: lbaig/catalog/options/update/:id
+recordUrl: lbaig/catalog/properties/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

@@ -14,7 +14,7 @@ fields:
         label: Display Name
         type: text
         span: right
-    optionItems:
-        label: Option Items
+    options:
+        label: Property Options
         type: partial
-        partial: ~/plugins/lbaig/catalog/controllers/options/_optionitems.htm
+        partial: ~/plugins/lbaig/catalog/controllers/properties/_options.htm

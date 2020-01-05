@@ -71,7 +71,8 @@ class Product extends Model
         'category' => 'Lbaig\Catalog\Models\Category'
     ];
     public $belongsToMany = [
-        'options' => ['Lbaig\Catalog\Models\Option', 'table'=>'lbaig_catalog_product_option']
+        'properties' => ['Lbaig\Catalog\Models\Property',
+                         'table'=>'lbaig_catalog_product_property']
     ];
     public $morphTo = [];
     public $morphOne = [];
@@ -89,7 +90,7 @@ class Product extends Model
 
     public function afterCreate()
     {
-        $categoryOptionIds = $this->category->options->pluck('id');
-        $this->options()->sync($categoryOptionIds);
+        $categoryPropertyIds = $this->category->properties->pluck('id');
+        $this->properties()->sync($categoryPropertyIds);
     }
 }

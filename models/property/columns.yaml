@@ -12,8 +12,8 @@ columns:
     display_name:
         label: Display Name
         type: text
-    optionItems_count:
+    options_count:
         label: Options
-        relation: optionItems
+        relation: options
         useRelationCount: true
         type: number

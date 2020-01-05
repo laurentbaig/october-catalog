@@ -2,14 +2,14 @@
 #  Relation Behavior Config
 # ===================================
 
-optionItems:
-    label: Option Item
+options:
+    label: Property Options
     view:
-        list: $/lbaig/catalog/models/optionitem/columns.yaml
+        list: $/lbaig/catalog/models/propertyoption/columns.yaml
         toolbarButtons: create|delete
         defaultSort:
             column: sort_order
             direction: asc
     manage:
-        form: $/lbaig/catalog/models/optionitem/fields.yaml
+        form: $/lbaig/catalog/models/propertyoption/fields.yaml
         recordsPerPage: 10

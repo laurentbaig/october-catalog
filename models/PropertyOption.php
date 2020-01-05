@@ -3,16 +3,17 @@
 use Model;
 
 /**
- * Option Model
+ * PropertyOption Model
  */
-class Option extends Model
+class PropertyOption extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Sortable;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'lbaig_catalog_options';
+    public $table = 'lbaig_catalog_property_options';
 
     /**
      * @var array Guarded fields
@@ -24,7 +25,9 @@ class Option extends Model
      */
     protected $fillable = [
         'name',
-        'display_name'
+        'description',
+        'price',
+        'shipping_weight',
     ];
 
     /**
@@ -64,27 +67,14 @@ class Option extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'optionItems' => 'Lbaig\Catalog\Models\OptionItem'
+    public $hasMany = [];
+    public $belongsTo = [
+        'property' => 'Lbaig\Catalog\Models\Property'
     ];
-    public $belongsTo = [];
-    public $belongsToMany = [
-        'categories' => ['Lbaig\Catalog\Models\Category', 'table' => 'lbaig_catalog_category_option'],
-        'products' => ['Lbaig\Catalog\Models\Product', 'table' => 'lbaig_catalog_product_option']
-    ];
+    public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
-
-
-    public function getDisplayNameAttribute($value)
-    {
-        if (strlen($value) === 0) {
-            return $this->name;
-        }
-        return $value;
-    }
-
 }

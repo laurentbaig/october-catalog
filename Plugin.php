@@ -103,10 +103,10 @@ class Plugin extends PluginBase
                         'url' => Backend::url('lbaig/catalog/products'),
                         'permissions' => ['lbaig.lshop.some_permission']
                     ],
-                    'options' => [
-                        'label' => 'Options',
+                    'properties' => [
+                        'label' => 'Properties',
                         'icon' => 'icon-list-ul',
-                        'url' => Backend::url('lbaig/catalog/options'),
+                        'url' => Backend::url('lbaig/catalog/properties'),
                         'permissions' => ['lbaig.lshop.some_permission']
                     ]
                 ]

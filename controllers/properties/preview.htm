@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('lbaig/catalog/options') ?>">Options</a></li>
+        <li><a href="<?= Backend::url('lbaig/catalog/properties') ?>">Properties</a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -14,6 +14,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('lbaig/catalog/options') ?>" class="btn btn-default">Return to options list</a></p>
+    <p><a href="<?= Backend::url('lbaig/catalog/properties') ?>" class="btn btn-default">Return to properties list</a></p>
 
 <?php endif ?>

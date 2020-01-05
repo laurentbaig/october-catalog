@@ -81,7 +81,8 @@ class Category extends Model
     public $belongsTo = ['parent' => 'Lbaig\Catalog\Models\Category'
     ];
     public $belongsToMany = [
-        'options' => ['Lbaig\Catalog\Models\Option', 'table' => 'lbaig_catalog_category_option']
+        'properties' => ['Lbaig\Catalog\Models\Property',
+                         'table' => 'lbaig_catalog_category_property']
     ];
     public $morphTo = [];
     public $morphOne = [];

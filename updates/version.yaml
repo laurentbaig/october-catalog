@@ -3,8 +3,8 @@
   - create_categories_table.php
   - create_products_table.php
 1.0.2:
-  - Adding options
-  - create_options_table.php
-  - create_option_items_table.php
-  - create_category_option_table.php
-  - create_product_option_table.php
+  - Adding properties
+  - create_properties_table.php
+  - create_property_options_table.php
+  - create_category_property_table.php
+  - create_product_property_table.php

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Property
+
+# Model Form Field configuration
+form: $/lbaig/catalog/models/property/fields.yaml
+
+# Model Class name
+modelClass: Lbaig\Catalog\Models\Property
+
+# Default redirect location
+defaultRedirect: lbaig/catalog/properties
+
+# Create page
+create:
+    title: Create Property
+    redirect: lbaig/catalog/properties/update/:id
+    redirectClose: lbaig/catalog/properties
+
+# Update page
+update:
+    title: Edit Property
+    redirect: lbaig/catalog/properties
+    redirectClose: lbaig/catalog/properties
+
+# Preview page
+preview:
+    title: Preview Property

@@ -2,13 +2,13 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use Lbaig\Catalog\Models\OptionItem;
+use Lbaig\Catalog\Models\PropertyOption;
 use Request;
 
 /**
  * Options Back-end Controller
  */
-class Options extends Controller
+class Properties extends Controller
 {
     public $implement = [
         'Backend.Behaviors.FormController',
@@ -24,7 +24,7 @@ class Options extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Lbaig.Catalog', 'catalog', 'options');
+        BackendMenu::setContext('Lbaig.Catalog', 'catalog', 'properties');
         $this->addJs('/plugins/lbaig/catalog/assets/js/Sortable.min.js');
         $this->addJs('/plugins/lbaig/catalog/assets/js/initialize_sorting.js');
     }
@@ -32,7 +32,7 @@ class Options extends Controller
     // to reorder the children OptionItem's
     public function onReorder() {
         $records = Request::input('rcd');
-        $model = new OptionItem;
+        $model = new PropertyOption;
         $model->setSortableOrder($records, range(1, count($records)));
-}
+    }
 }
