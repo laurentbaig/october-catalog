@@ -18,7 +18,7 @@ columns:
     sort_order_handle:
         label: "<i class=\"icon-arrows\"></i>"
         type: partial
-        path: $/lbaig/catalog/models/optionitem/_reorder_handle.htm
+        path: $/lbaig/catalog/models/propertyoption/_reorder_handle.htm
         sortable: false
         width: 60px
     sort_order:

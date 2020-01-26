@@ -8,6 +8,9 @@ list: $/lbaig/catalog/models/product/columns.yaml
 # Model Class name
 modelClass: Lbaig\Catalog\Models\Product
 
+# Model filters
+filter: config_filter.yaml
+
 # List Title
 title: Manage Products
 

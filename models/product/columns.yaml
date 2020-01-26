@@ -16,3 +16,8 @@ columns:
     name:
         label: Name
         type: text
+    price:
+        label: Base Price
+        type: text
+        format: $ %.02f
+        cssClass: text-right

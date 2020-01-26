@@ -29,7 +29,7 @@ class Properties extends Controller
         $this->addJs('/plugins/lbaig/catalog/assets/js/initialize_sorting.js');
     }
 
-    // to reorder the children OptionItem's
+    // to reorder the children PropertyOptions's
     public function onReorder() {
         $records = Request::input('rcd');
         $model = new PropertyOption;
