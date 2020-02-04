@@ -93,19 +93,19 @@ class Plugin extends PluginBase
                         'label' => 'Categories',
                         'icon' => 'icon-sitemap',
                         'url' => Backend::url('lbaig/catalog/categories'),
-                        'permissions' => ['lbaig.lshop.some_permission']
+                        'permissions' => ['lbaig.catalog.some_permission']
                     ],
                     'products' => [
                         'label' => 'Products',
                         'icon' => 'icon-book',
                         'url' => Backend::url('lbaig/catalog/products'),
-                        'permissions' => ['lbaig.lshop.some_permission']
+                        'permissions' => ['lbaig.catalog.some_permission']
                     ],
                     'properties' => [
                         'label' => 'Properties',
                         'icon' => 'icon-list-ul',
                         'url' => Backend::url('lbaig/catalog/properties'),
-                        'permissions' => ['lbaig.lshop.some_permission']
+                        'permissions' => ['lbaig.catalog.some_permission']
                     ]
                 ]
             ],
