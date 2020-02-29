@@ -30,6 +30,7 @@ class ProductList extends ComponentBase
         // select all products that belong to this category or lower
         $products = Product::active()
                   ->whereIn('category_id', $subcategory_ids)
+                  ->orderBy('created_at', 'desc')
                   ->get();
 
         return $products;
