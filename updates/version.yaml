@@ -8,3 +8,6 @@
   - create_property_options_table.php
   - create_category_property_table.php
   - create_product_property_table.php
+1.0.3:
+  - More categories for products
+  - create_category_product_table.php

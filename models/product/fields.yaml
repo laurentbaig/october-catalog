@@ -64,3 +64,12 @@ tabs:
                 - preview
             span: left
             tab: Properties
+        categories:
+            label: Other categories
+            type: relation
+            nameFrom: name
+            context:
+                - update
+                - preview
+            span: right
+            tab: Properties
