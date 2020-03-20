@@ -83,7 +83,7 @@ class Category extends Model
     public $belongsToMany = [
         'properties' => ['Lbaig\Catalog\Models\Property',
                          'table' => 'lbaig_catalog_category_property'],
-        'product_links' => ['Lbaig\Catalog\Models\Product',
+        'other_products' => ['Lbaig\Catalog\Models\Product',
                             'table' => 'lbaig_catalog_category_product']
     ];
     public $morphTo = [];

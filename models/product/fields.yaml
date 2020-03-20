@@ -64,7 +64,7 @@ tabs:
                 - preview
             span: left
             tab: Properties
-        categories:
+        other_categories:
             label: Other categories
             type: relation
             nameFrom: name
