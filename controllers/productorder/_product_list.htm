@@ -6,7 +6,9 @@
 	    <a href="javascript:;">
 		<span class="oc-icon-bars"></span>
 	    </a>
+	    <?php if ($product->preview_image): ?>
 	    <img src="<?= $product->preview_image->path ?>">
+	    <?php endif; ?>
             <span><?= $product->name ?></span>
             <input name="record_ids[]"
 		   type="hidden"
