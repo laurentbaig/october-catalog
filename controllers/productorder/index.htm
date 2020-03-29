@@ -1,0 +1,31 @@
+<?= $this->makePartial('reorder_toolbar') ?>
+
+<style>
+ #products-list > ul {
+     list-style-type: none;
+ }
+ .product-line {
+     display: block;
+     height: 90px;
+     padding-bottom: 5px;
+ }
+ .product-line img {
+     height: 80px;
+ }
+ body.dragging, body.dragging * {
+     cursor: move !important
+ }
+ .dragged {
+     position: absolute; opacity: 0.5; z-index: 2000;
+ }
+ #products-list li.placeholder {
+     position: relative;
+ }
+</style>
+
+<div style="padding-top: 20px"></div>
+
+<div id="products-list">
+    <?= $this->makePartial('product_list'); ?>
+</div>
+

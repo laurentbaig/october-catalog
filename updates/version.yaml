@@ -11,3 +11,6 @@
 1.0.3:
   - More categories for products
   - create_category_product_table.php
+1.0.4:
+  - Orderable products
+  - update_products_add_sort_order.php

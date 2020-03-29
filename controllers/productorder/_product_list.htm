@@ -1,0 +1,37 @@
+
+<ul>
+    <?php foreach ($products as $product): ?>
+    <li class="product-line">
+	<div class="record">
+	    <a href="javascript:;">
+		<span class="oc-icon-bars"></span>
+	    </a>
+	    <img src="<?= $product->preview_image->path ?>">
+            <span><?= $product->name ?></span>
+            <input name="record_ids[]"
+		   type="hidden"
+		   value="<?= $product->id ?>"
+	    />
+	</div>
+    </li>
+    <?php endforeach; ?>
+</ul>
+
+<script>
+ $('#products-list > ul').sortable({
+     onDrop: function($item, container, _super) {
+	 _super($item, container);
+	 let records = document.querySelectorAll('input[name="record_ids[]"]');
+	 let record_ids = [];
+	 records.forEach((item, index) => {
+	     record_ids[index] = item.value;
+	 });
+	 $('#products-list').request('onReorder', {
+	     data: {
+		 record_ids: record_ids
+	     }
+	 });
+     }
+ });
+</script>
+

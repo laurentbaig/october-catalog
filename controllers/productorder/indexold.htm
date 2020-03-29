@@ -1,0 +1,79 @@
+<style>
+ body.dragging, body.dragging * {
+     cursor: move !important
+ }
+ 
+ .productbox {
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: space-between;
+     padding: 0 5%;
+ }
+ .productitem {
+     display: block;
+     flex: 0 0 25%;
+     overflow: hidden;
+     position: relative;
+ }
+ .productitem:before {
+     content: '';
+     float: left;
+     padding-top: 100%;
+ }
+ .productitem-image {
+     bottom: 0;
+     height: 100%;
+     left: 0;
+     opacity: 100%;
+     overflow: hidden;
+     position: absolute;
+     right: 0;
+     top: 0;
+     transition: opacity .3s ease-out;
+     width: 100%;
+ }
+ .productitem-image img {
+     width: 100%;
+ }
+ .productitem-title {
+     bottom: 0;
+     position: absolute;
+     text-align: center;
+     width: 100%;
+ }
+</style>
+
+<div class="layout-row">
+    <div class="toolbar-widget list-header">
+	<div class="control-toolbar">
+	    <div class="toolbar-item">
+	    </div>
+	</div>
+    </div>
+
+    <div class="panel">
+	<div style="margin-bottom: 16px">
+	<select class="form-control custom-select"
+		       name="category"
+		       data-request="onSelectCategory">
+	    <option selected disabled>Select category</option>
+	    <?php foreach ($categories as $cat): ?>
+	    <option value="<?= $cat->id ?>"
+		<?php if ($cat && ($cat->id == $selectedCategoryId)): ?>
+		selected
+		<?php endif; ?>
+		>
+		<?= $cat->name ?>
+	    </option>
+	    <?php endforeach; ?>
+	</select>
+	</div>
+	<div id="product-list">
+	    <?php /*
+	    <?= $this->makePartial('product_list', [ 'products' => $products ]); ?>
+	    */ ?>
+	    <?= $this->reorderRender() ?>
+	</div>
+    </div>
+    
+</div>

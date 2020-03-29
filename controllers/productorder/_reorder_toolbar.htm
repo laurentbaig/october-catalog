@@ -1,0 +1,21 @@
+<div data-control="toolbar">
+    <a href="<?= Backend::url('lbaig/catalog/products/index') ?>"
+       class="btn btn-primary oc-icon-caret-left">
+	Return to the product list
+    </a>
+
+    <select class="form-control custom-select"
+	    name="category"
+	    data-request="onSelectCategory">
+	<option selected disabled>Select category</option>
+	<?php foreach ($categories as $cat): ?>
+	<option value="<?= $cat->id ?>"
+	    <?php if ($cat && ($cat->id == $selectedCategoryId)): ?>
+	    selected
+	    <?php endif; ?>
+	    >
+	    <?= $cat->name ?>
+	</option>
+	<?php endforeach; ?>
+    </select>
+</div>

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Product Order
+
+# Model Form Field configuration
+form: $/lbaig/catalog/models/productorder/fields.yaml
+
+# Model Class name
+modelClass: Lbaig\Catalog\Models\ProductOrder
+
+# Default redirect location
+defaultRedirect: lbaig/catalog/productorder
+
+# Create page
+create:
+    title: Create Product Order
+    redirect: lbaig/catalog/productorder/update/:id
+    redirectClose: lbaig/catalog/productorder
+
+# Update page
+update:
+    title: Edit Product Order
+    redirect: lbaig/catalog/productorder
+    redirectClose: lbaig/catalog/productorder
+
+# Preview page
+preview:
+    title: Preview Product Order
