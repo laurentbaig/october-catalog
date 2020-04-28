@@ -10,14 +10,22 @@ columns:
         label: Active
         type: switch
     category:
-        lable: Category
+        label: Category
         relation: category
+        select: name
+        searchable: true
+    other_categories:
+        label: Other categories
+        relation: other_categories
+        searchable: true
         select: name
     name:
         label: Name
         type: text
+        searchable: true
     price:
         label: Base Price
         type: text
         format: $ %.02f
         cssClass: text-right
+        
