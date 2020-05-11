@@ -11,6 +11,7 @@ fields:
         label: Taxable
         type: switch
         span: right
+        default: true
     category:
         label: Category
         type: relation
