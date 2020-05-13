@@ -31,11 +31,13 @@ tabs:
             type: number
             span: left
             tab: Meta
+            default: 0
         shipping_weight:
             label: Base Shipping Weight
             type: number
             span: left
             tab: Meta
+            default: 0
         vendor_code:
             label: Vendor Code
             type: text
