@@ -22,8 +22,12 @@ class CategoryList extends ComponentBase
     public function getRootCategories()
     {
         $categories = Category::active()
+                    ->getAllRoot();
+        /*
                     ->whereNull('parent_id')
+                    ->orderBy('nest_right', 'asc')
                     ->get();
+*/
         return $categories;
     }
 }
