@@ -30,8 +30,9 @@ class ProductList extends ComponentBase
         // select all products that belong to this category or lower
         $products = Product::active()
                   ->whereIn('category_id', $subcategory_ids)
+                  ->orderBy('category_id', 'asc')
                   ->orderBy('sort_order', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('lbaig_catalog_products.created_at', 'desc')
                   ->get();
 
         // now collect all products that are 'other_products'

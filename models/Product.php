@@ -89,7 +89,7 @@ class Product extends Model
 
     public function scopeActive($query)
     {
-        $query->where('active', true);
+        $query->where('lbaig_catalog_products.active', true);
     }
 
     public function afterCreate()
