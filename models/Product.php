@@ -97,4 +97,11 @@ class Product extends Model
         $categoryPropertyIds = $this->category->properties->pluck('id');
         $this->properties()->sync($categoryPropertyIds);
     }
+
+    public function getNameCategoryAttribute($value)
+    {
+        //$category = Category::find($this->category_id);
+        $this->load('category');
+        return $this->name . ' - ' . $this->category->name . " ({$this->id})";
+    }
 }

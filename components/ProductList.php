@@ -37,7 +37,7 @@ class ProductList extends ComponentBase
 
         // now collect all products that are 'other_products'
         $other_products = $category->other_products;
-        $allproducts = $products->merge($other_products);
+        $allproducts = $products; // ->merge($other_products);
 
         return $allproducts;
     }
