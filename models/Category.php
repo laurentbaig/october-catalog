@@ -120,4 +120,17 @@ class Category extends Model
 
         return $products;
     }
+
+    public function getAllProductsCountAttribute()
+    {
+        $direct_product_count = $this->getNestedCountAttribute();
+        $other_product_count = Product::active()
+                             ->whereHas('other_categories', function ($query) {
+                                 $query->where('lbaig_catalog_categories.id', $this->id);
+                             })
+                             ->count();
+        $all_product_count = $direct_product_count + $other_product_count;
+        \Log::info("{$this->name} has {$all_product_count} items");
+        return $all_product_count;
+    }
 }
