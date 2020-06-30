@@ -130,7 +130,6 @@ class Category extends Model
                              })
                              ->count();
         $all_product_count = $direct_product_count + $other_product_count;
-        \Log::info("{$this->name} has {$all_product_count} items");
         return $all_product_count;
     }
 }
