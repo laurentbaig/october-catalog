@@ -44,6 +44,12 @@ tabs:
             span: left
             tab: Meta
             default: 0
+        web_exclusive:
+            label: Web Exclusive
+            type: switch
+            span: right
+            tab: Meta
+            default: false
         vendor_code:
             label: Vendor Code
             type: text

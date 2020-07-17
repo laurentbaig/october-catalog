@@ -17,3 +17,6 @@
 1.0.5:
   - Add sell online checkbox
   - update_products_add_sell_online.php
+1.0.6:
+  - Add web_exclusive checkbox
+  - update_products_add_web_exclusive.php
