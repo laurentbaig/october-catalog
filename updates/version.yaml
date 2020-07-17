@@ -14,3 +14,6 @@
 1.0.4:
   - Orderable products
   - update_products_add_sort_order.php
+1.0.5:
+  - Add sell online checkbox
+  - update_products_add_sell_online.php

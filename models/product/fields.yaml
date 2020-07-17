@@ -32,6 +32,12 @@ tabs:
             span: left
             tab: Meta
             default: 0
+        sell_online:
+            label: Sell Online
+            type: switch
+            span: right
+            tab: Meta
+            default: true
         shipping_weight:
             label: Base Shipping Weight
             type: number
