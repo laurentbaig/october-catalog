@@ -31,14 +31,14 @@ class ProductOrder extends Controller
         $categories = Category::has('products')->get();
         $this->vars['categories'] = $categories;
         $this->category = $this->vars['selectedCategoryId'] = $categories->first()->id;
-        $products = $categories->first()->products;
+        $products = $categories->first()->products()->active()->get();
         $this->vars['products'] = $products;
     }
 
     public function onSelectCategory()
     {
         $this->category = $category = Category::findOrFail(input('category'));
-        $products = $category->products()->orderBy('sort_order', 'asc')->get();
+        $products = $category->products()-active()->orderBy('sort_order', 'asc')->get();
         return $this->renderProducts($products);
     }
 
