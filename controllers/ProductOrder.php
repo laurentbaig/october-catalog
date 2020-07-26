@@ -38,7 +38,7 @@ class ProductOrder extends Controller
     public function onSelectCategory()
     {
         $this->category = $category = Category::findOrFail(input('category'));
-        $products = $category->products()-active()->orderBy('sort_order', 'asc')->get();
+        $products = $category->products()->active()->orderBy('sort_order', 'asc')->get();
         return $this->renderProducts($products);
     }
 
