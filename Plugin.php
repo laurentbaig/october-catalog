@@ -111,4 +111,20 @@ class Plugin extends PluginBase
             ],
         ];
     }
+
+    public function registerSettings()
+    {
+        return [
+            'basket' => [
+                'label'       => 'Catalog Settings',
+                'description' => 'Manage catalog settings.',
+                'category'    => 'Catalog',
+                'icon'        => 'icon-cog',
+                'class'       => 'Lbaig\Catalog\Models\Settings',
+                'order'       => 500,
+                'keywords'    => 'security location',
+                'permissions' => ['lbaig.catalog.access_settings']
+            ]
+        ];
+    }
 }

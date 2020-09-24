@@ -1,0 +1,8 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    category_show_subcat_items:
+        label: Categories show subcategory items
+        type: switch
