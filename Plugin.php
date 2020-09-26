@@ -71,6 +71,10 @@ class Plugin extends PluginBase
                 'tab' => 'Catalog',
                 'label' => 'Some permission'
             ],
+            'lbaig.catalog.access_settings' => [
+                'tab' => 'Catalog',
+                'label' => 'Access backend settings'
+            ],
         ];
     }
 
