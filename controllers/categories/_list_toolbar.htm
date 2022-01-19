@@ -21,7 +21,9 @@
 
     <a
 	href="<?= Backend::url('lbaig/catalog/categories/reorder') ?>"
-	class="btn btn-default oc-icon-sitemap">
+	      class="btn btn-default oc-icon-sitemap">
         <?= e(trans('lbaig.catalog::lang.categories.reorder')) ?>
     </a>
+
+    <?= $this->fireViewEvent('lbaig.catalog.extendCategoriesToolbar') ?>
 </div>

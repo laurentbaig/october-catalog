@@ -20,3 +20,6 @@
 1.0.6:
   - Add web_exclusive checkbox
   - update_products_add_web_exclusive.php
+1.0.7:
+  - Add in_store checkbox
+  - update_products_add_in_store.php

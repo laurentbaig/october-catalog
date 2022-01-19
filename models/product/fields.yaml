@@ -26,30 +26,35 @@ fields:
         span: right
 tabs:
     fields:
-        price:
-            label: Base price
-            type: number
-            span: left
-            tab: Meta
-            default: 0
         sell_online:
             label: Sell Online
             type: switch
-            span: right
-            tab: Meta
-            default: true
-        shipping_weight:
-            label: Base Shipping Weight
-            type: number
             span: left
             tab: Meta
-            default: 0
+            default: true
         web_exclusive:
             label: Web Exclusive
             type: switch
             span: right
             tab: Meta
             default: false
+        in_store:
+            label: Available In Store
+            type: switch
+            tab: Meta
+            default: true
+        price:
+            label: Base price
+            type: number
+            span: left
+            tab: Meta
+            default: 0
+        shipping_weight:
+            label: Base Shipping Weight
+            type: number
+            span: left
+            tab: Meta
+            default: 0
         vendor_code:
             label: Vendor Code
             type: text
