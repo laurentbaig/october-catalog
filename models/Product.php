@@ -1,6 +1,9 @@
 <?php namespace Lbaig\Catalog\Models;
 
 use Model;
+use Catalog;
+use Cms\Classes\Page as CmsPage;
+use Cms\Classes\Theme;
 
 /**
  * Product Model
@@ -103,5 +106,180 @@ class Product extends Model
         //$category = Category::find($this->category_id);
         $this->load('category');
         return $this->name . ' - ' . $this->category->name . " ({$this->id})";
+    }
+
+    public static function getMenuTypeInfo($type)
+    {
+        $result = [];
+
+        if ($type == 'catalog-product') {
+            $references = [];
+
+            $products = self::orderBy('name')->get();
+            foreach ($products as $product) {
+                $references[$product->id] = $product->name;
+            }
+
+            $result = [
+                'references'   => $references,
+                'nesting'      => false,
+                'dynamicItems' => false
+            ];
+        }
+
+        if ($type == 'all-catalog-products') {
+            $result = [
+                'dynamicItems' => true
+            ];
+        }
+
+        if ($type == 'category-catalog-products') {
+            $references = [];
+
+            $categories = Category::orderBy('name')->get();
+            foreach ($categories as $category) {
+                $references[$category->id] = $category->name;
+            }
+
+            $result = [
+                'references'   => $references,
+                'dynamicItems' => true
+            ];
+        }
+
+        if ($result) {
+            $theme = Theme::getActiveTheme();
+            $pages = CmsPage::listInTheme($theme, true);
+            $cmsPages = [];
+            foreach ($pages as $page) {
+                if (!$page->hasComponent('ProductItem')) {
+                    continue;
+                }
+
+                $properties = $page->getComponentProperties('ProductItem');
+                if (!isset($properties['slug']) || !preg_match('/{{\s*:/', $properties['slug'])) {
+                    continue;
+                }
+
+                $cmsPages[] = $page;
+            }
+
+            $result['cmsPages'] = $cmsPages;
+        }
+
+        return $result;
+    }
+
+    public static function resolveMenuItem($item, $url, $theme)
+    {
+        $result = null;
+
+        if ($item->type == 'catalog-product') {
+            if (!$item->reference || !$item->cmsPage) {
+                return;
+            }
+
+            $product = self::find($item->reference);
+            if (!$product) {
+                return;
+            }
+
+            $pageUrl = self::getProductPageUrl($item->cmsPage, $product, $theme);
+            if (!$pageUrl) {
+                return;
+            }
+
+            $pageUrl = Url::to($pageUrl);
+
+            $result = [];
+            $result['url'] = $pageUrl;
+            $result['isActive'] = $pageUrl == $url;
+            $result['mtime'] = $product->updated_at;
+        }
+        elseif ($item->type == 'all-catalog-products') {
+            $result = [
+                'items' => []
+            ];
+
+            $products = self::active()
+                      ->orderBy('name')
+                      ->get();
+
+            foreach ($products as $product) {
+                $postItem = [
+                    'title' => $product->name,
+                    'url'   => self::getProductPageUrl($item->cmsPage, $product, $theme),
+                    'mtime' => $product->updated_at
+                ];
+
+                $postItem['isActive'] = $postItem['url'] == $url;
+
+                $result['items'][] = $postItem;
+            }
+        }
+        elseif ($item->type == 'category-blog-posts') {
+            if (!$item->reference || !$item->cmsPage) {
+                return;
+            }
+
+            $category = Category::find($item->reference);
+            if (!$category) {
+                return;
+            }
+
+            $result = [
+                'items' => []
+            ];
+
+            $query = self::isPublished()
+                   ->orderBy('name');
+
+            $categories = $category->getAllChildrenAndSelf()->lists('id');
+            $query->whereHas('other_categories', function($q) use ($categories) {
+                $q->whereIn('id', $categories);
+            });
+
+            $products = $query->get();
+
+            foreach ($products as $product) {
+                $postItem = [
+                    'title' => $product->name,
+                    'url'   => self::getProductPageUrl($item->cmsPage, $product, $theme),
+                    'mtime' => $product->updated_at
+                ];
+
+                $postItem['isActive'] = $postItem['url'] == $url;
+
+                $result['items'][] = $postItem;
+            }
+        }
+
+        return $result;
+    }
+
+    protected static function getProductPageUrl($pageCode, $product, $theme)
+    {
+        $page = CmsPage::loadCached($theme, $pageCode);
+        if (!$page) {
+            return;
+        }
+
+        $properties = $page->getComponentProperties('ProductItem');
+        if (!isset($properties['slug'])) {
+            return;
+        }
+
+        /*
+         * Extract the routing parameter name from the category filter
+         * eg: {{ :someRouteParam }}
+         */
+        if (!preg_match('/^\{\{([^\}]+)\}\}$/', $properties['slug'], $matches)) {
+            return;
+        }
+
+        $paramName = substr(trim($matches[1]), 1);
+        $url = CmsPage::url($page->getBaseFileName(), [$paramName => $product->slug]);
+
+        return $url;
     }
 }

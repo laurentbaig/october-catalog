@@ -2,6 +2,7 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use Event;
 
 /**
  * Catalog Plugin Information File
@@ -40,7 +41,36 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        // Register menu items
+        Event::listen('pages.menuitem.listTypes', function () {
+            return [
+                'catalog-category' => 'Catalog Category',
+                'all-catalog-categories' => 'All Catalog Categories',
+                'catalog-product' => 'Catalog Product',
+                'all-catalog-products' => 'All Catalog Products',
+                'category-catalog-products' => 'Catagorized Catalog Products'
+            ];
+        });
 
+        Event::listen('pages.menuitem.getTypeInfo', function ($type) {
+            if ($type == 'catalog-category' || $type == 'all-catalog-categories') {
+                return \Lbaig\Catalog\Models\Category::getMenuTypeInfo($type);
+            }
+            elseif ($type == 'catalog-product' || $type == 'all-catalog-products' ||
+                    $type == 'category-catalog-products') {
+                return \LBaig\Catalog\Models\Product::getMenuTypeInfo($type);
+            }
+        });
+
+        Event::listen('pages.menuitem.resolveItem', function ($type, $item, $url, $theme) {
+            if ($type == 'catalog-category' || $type == 'all-catalog-categories') {
+                return \Lbaig\Catalog\Models\Category::resolveMenuItem($item, $url, $theme);
+            }
+            elseif ($type == 'catalog-product' || $type == 'all-catalog-products' ||
+                    $type == 'category-catalog-products') {
+                return \LBaig\Catalog\Models\Product::resolveMenuItem($item, $url, $theme);
+            }
+        });
     }
 
     /**
